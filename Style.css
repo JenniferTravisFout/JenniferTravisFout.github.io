@@ -1,25 +1,19 @@
 
 		body {
 			background-color: #white;
-			font-family: "times",serif;
+			font-family: "times",sans-serif;
 		}
 		h1 {
 			font-size: 18px; 
 			line-height: 24px;
-			font-family: "times",serif;
+			font-family: "times",sans-serif;
 			color: #123456;
 		}
 		p {color: #0387A8}
 		.navigation {background-color: #03375A;
 			width: 800px; 
 			color: #BCC7CC;}
-		.navbar-header {background-color: #03375A;}
-		.navbar-nav {background-color: #03375A;}
-		.navbar-default {background-color: #03375A;}
-		.active {color: red;}
-		
-		
-		.navbar-toggle {background-color: #03375A;}
+
 
 		.headline p {background-color: #245323;
 			font-size: 14px;}
