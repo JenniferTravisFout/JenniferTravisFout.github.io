@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Forecast - Dark Mode Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background-color: #0F1419;
+            color: #FFFFFF;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        .header-card {
+            background: #1A1F2E;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2D3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+        
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .recommendation-text {
+            font-size: 0.875rem;
+            color: #B0B8C1;
+        }
+        
+        .chip {
+            background: #FF4A47;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .cards-count {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-left: 16px;
+            color: #FFFFFF;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+        
+        .btn-outlined {
+            background: transparent;
+            border: 1px solid #0084d5;
+            color: #0084d5;
+        }
+        
+        .btn-outlined:hover {
+            background: rgba(0, 132, 213, 0.08);
+        }
+        
+        .btn-contained {
+            background: #0084d5;
+            color: white;
+            box-shadow: none;
+        }
+        
+        .btn-contained:hover {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B0B8C1;
+        }
+        
+        .icon-btn:hover {
+            background: rgba(176, 184, 193, 0.08);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .risk-card {
+            background: #1A1F2E;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2D3748;
+            transition: all 0.2s;
+        }
+        
+        .risk-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: #4A5568;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .card-token {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        
+        .risk-chip {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .risk-high {
+            background: #FF4A47;
+            color: white;
+        }
+        
+        .risk-medium {
+            background: #FFB347;
+            color: #1A1A1A;
+        }
+        
+        .risk-low {
+            background: #00A5B4;
+            color: white;
+        }
+        
+        .progress-section {
+            margin-bottom: 16px;
+        }
+        
+        .progress-label {
+            font-size: 0.875rem;
+            color: #B0B8C1;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #2D3748;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .progress-high {
+            background: #FF4A47;
+        }
+        
+        .progress-medium {
+            background: #FFB347;
+        }
+        
+        .progress-low {
+            background: #00A5B4;
+        }
+        
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 0.75rem;
+            color: #B0B8C1;
+            margin-bottom: 4px;
+        }
+        
+        .detail-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        
+        .card-footer {
+            padding-top: 16px;
+            border-top: 1px solid #2D3748;
+        }
+        
+        .last-updated {
+            font-size: 0.75rem;
+            color: #B0B8C1;
+        }
+        
+        .material-icons {
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header-card {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            
+            .header-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Dark mode specific enhancements */
+        .header-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0084d5, transparent);
+            opacity: 0.5;
+        }
+        
+        .risk-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2D3748, transparent);
+            opacity: 0.8;
+        }
+        
+        .header-card,
+        .risk-card {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-card">
+            <div class="header-left">
+                <h1>Fraud Forecast</h1>
+                <div class="header-info">
+                    <span class="recommendation-text">Recommendation</span>
+                    <span class="chip">
+                        <span class="material-icons" style="font-size: 14px;">warning</span>
+                        High Risk
+                    </span>
+                    <span class="cards-count">9 Cards</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <span class="material-icons">brightness_7</span>
+                </button>
+                <button class="btn btn-outlined">
+                    <span class="material-icons">filter_list</span>
+                    Filter
+                </button>
+                <button class="btn btn-contained">
+                    <span class="material-icons">download</span>
+                    Export
+                </button>
+            </div>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">5790952865265969</div>
+                    <div class="risk-chip risk-high">Risk: 78</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-high" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">01/04/2029</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 06/23/2025</div>
+                </div>
+            </div>
+            
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">0540016577238532</div>
+                    <div class="risk-chip risk-high">Risk: 78</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-high" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">06/05/2028</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 06/22/2025</div>
+                </div>
+            </div>
+            
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">4929493933902271</div>
+                    <div class="risk-chip risk-medium">Risk: 75</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-medium" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">04/04/2028</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 09/03/2023</div>
+                </div>
+            </div>
+            
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">7907412686246205</div>
+                    <div class="risk-chip risk-medium">Risk: 74</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-medium" style="width: 74%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">—</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 06/25/2025</div>
+                </div>
+            </div>
+            
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">6606625807305800</div>
+                    <div class="risk-chip risk-medium">Risk: 73</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-medium" style="width: 73%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">08/04/2028</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 04/03/2024</div>
+                </div>
+            </div>
+            
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-token">4532123456789012</div>
+                    <div class="risk-chip risk-low">Risk: 45</div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">Risk Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-low" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Expires</div>
+                        <div class="detail-value">12/12/2027</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Active</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="last-updated">Last Updated: 01/15/2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
